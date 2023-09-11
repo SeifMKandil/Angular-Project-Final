@@ -1,0 +1,41 @@
+body {
+    background-image: url('https://i.pinimg.com/originals/b0/eb/41/b0eb41bdb91e75f326a0b1056fa088c6.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.gradient-form {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 50px 0;
+}
+
+.gradient-text {
+    background: linear-gradient(to right, #FF0000, #8B0000, #000000);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.image-container {
+    width: 100%;
+    height: 100%; 
+}
+
+.image-container img {
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+}
+
+.movie-title{
+    padding-top: 0px; 
+    text-decoration: underline; 
+    text-align: center;
+}
+
+.movie-card-details{
+    font-size: large;
+}

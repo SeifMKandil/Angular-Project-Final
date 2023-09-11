@@ -3,6 +3,7 @@
 
 :root {
     --Movie-Red: #ff0000;
+    --Movie-Black: #000000;
 }
 
 a{
@@ -10,11 +11,7 @@ a{
     color: inherit; 
 }
 
-.gradient-text {
-    background: linear-gradient(to right, #FF0000, #8B0000, #000000);
-    -webkit-background-clip: text;
-    color: transparent;
-}
+
 
 p{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
@@ -45,6 +42,37 @@ html[dir=rtl] .movie-image{
     margin-left: 20px;
 }
 
+
+.gradient-custom-2 {
+    background: #fccb90;
+    
+    background: -webkit-linear-gradient(to right, #ec1616, #000000, #ff0707, #111011);
+    
+    background: linear-gradient(to right, #FF0000, #8B0000, #000000);
+}
+
+.gradient-text {
+    background: linear-gradient(to right, #FF0000, #8B0000, #000000);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+
+.gradient-form {
+    background-color: rgba(0, 0, 0, 0.5); 
+    padding: 50px 0;
+}
+
+
 .error-message{
     color: #FF0000;
+}
+
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+    
+}
+
+input.ng-valid.ng-touched {
+    border: 1px solid rgb(30, 255, 0);
 }

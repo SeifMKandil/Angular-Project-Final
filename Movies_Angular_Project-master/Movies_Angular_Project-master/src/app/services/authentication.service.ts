@@ -1,14 +1,11 @@
-// shared.service.ts
-
 import { Injectable } from '@angular/core';
-
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
   private registeredUsers: any[] = [];
 
-  constructor() {}
+  constructor() { }
 
   getRegisteredUsers(): any[] {
     return this.registeredUsers;

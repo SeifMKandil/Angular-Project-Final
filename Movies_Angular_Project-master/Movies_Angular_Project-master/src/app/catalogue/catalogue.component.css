@@ -1,3 +1,13 @@
+body {
+    background-image: url('https://i.pinimg.com/originals/b0/eb/41/b0eb41bdb91e75f326a0b1056fa088c6.jpg');
+    background-size: 100% 100%; 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: white; 
+    margin: 0; 
+    padding: 0; 
+    overflow: hidden;
+}
 
 .movie-container {
     display: flex;
@@ -23,16 +33,10 @@
     flex: 1;
 }
 
+.movie-details-text{
+    font-size: medium;
+}
 
-    
-    body {
-        background-image: url('https://i.pinimg.com/originals/b0/eb/41/b0eb41bdb91e75f326a0b1056fa088c6.jpg');
-        background-size: 100% 100%; /* Set the background image to cover the entire page */
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        color: white; 
-        margin: 0; 
-        padding: 0; 
-        overflow: hidden;
-    }
-
+.movie-details-header{
+    text-align: center; padding-bottom: 20px;
+}

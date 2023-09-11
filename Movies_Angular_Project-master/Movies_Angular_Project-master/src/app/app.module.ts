@@ -30,27 +30,6 @@ import { AppRoutingModule } from './app-routing.module';
 
 
 
-
-
-// const appRoutes: Routes = [
-//   { path: '' , component: HomeComponent },
-//   { path: 'register' , component: RegisterComponent },
-//   { path: 'movieDetails/:id',component:MovieDetailsComponent},
-//   {
-//     path: 'catalogue',
-//     component: CatalogueComponent,
-//     canActivate: [AuthGuard], 
-//   },
-
-  
-
-//   {
-//     path: 'auth',
-//     component: AuthComponent,
-//     canActivate: [LoginGuard], 
-//   },
-// ] 
-
 @NgModule({
   declarations: [
     AppComponent,
