@@ -2,7 +2,7 @@
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {  ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -25,6 +25,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { SharedModule } from './shared/shared.module';
+import { CatalogueModule } from './catalogue/catalogue.module';
 
 
 
@@ -34,8 +35,6 @@ import { SharedModule } from './shared/shared.module';
     AppComponent,
     HomeComponent,
     CarouselComponent,
-    CatalogueComponent,
-    MovieDetailsComponent,
     AuthenticationComponent,
   ],
   imports: [
@@ -47,6 +46,7 @@ import { SharedModule } from './shared/shared.module';
     ReactiveFormsModule,
     AuthenticationModule,
     SharedModule,
+    CatalogueModule,
   
     
     
