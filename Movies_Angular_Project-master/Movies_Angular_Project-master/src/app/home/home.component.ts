@@ -7,13 +7,17 @@ import { MovieApiService } from '../services/movie-api.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  movies:any;
-  constructor(private service:MovieApiService) {}
+  movies: any;
+  constructor(private service: MovieApiService) { }
   title = 'Movies_Project';
 
   ngOnInit() {
+    this.getMovies();
+  }
+
+  getMovies() {
     this.service.get_Movies().subscribe(response => {
-      
+
       this.movies = response;
     })
   }

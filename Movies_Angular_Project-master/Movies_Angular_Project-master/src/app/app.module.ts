@@ -6,17 +6,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
 
 import { HomeComponent } from './home/home.component';
-import { CarouselComponent } from './carousel/carousel.component';
+import { CarouselComponent } from './home/carousel/carousel.component';
 import { CatalogueComponent } from './catalogue/catalogue.component';
-import { AuthComponent } from './auth/auth.component';
-import { RegisterComponent } from './register/register.component';
-import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { MovieDetailsComponent } from './catalogue/movie-details/movie-details.component';
 
-import { RouterModule, Routes } from '@angular/router';
-import { SpinnerComponent } from './shared/spinner.component';
+
 
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -26,6 +22,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthGuard } from './guards/auth.guard';
 import { LoginGuard } from './guards/login.guard';
 import { AppRoutingModule } from './app-routing.module';
+import { AuthenticationComponent } from './authentication/authentication.component';
+import { AuthenticationModule } from './authentication/authentication.module';
+import { SharedModule } from './shared/shared.module';
 
 
 
@@ -33,25 +32,22 @@ import { AppRoutingModule } from './app-routing.module';
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     HomeComponent,
     CarouselComponent,
     CatalogueComponent,
-    AuthComponent,
-    RegisterComponent,
     MovieDetailsComponent,
-    SpinnerComponent,
-    
-  
+    AuthenticationComponent,
   ],
   imports: [
     BrowserModule,
     MatProgressSpinnerModule,
-    FormsModule,
     BrowserAnimationsModule,
     HttpClientModule, 
     AppRoutingModule,
     ReactiveFormsModule,
+    AuthenticationModule,
+    SharedModule,
+  
     
     
     TranslateModule.forRoot({
@@ -80,6 +76,3 @@ export function createTranslateLoader(http:HttpClient){
 }
 
 
-// const ApiKey = "f2d7215515a34f350462609e31a408ef";
-// const Base = 'https://api.themoviedb.org/3/'
-// https://api.themoviedb.org/3/movie/157336?api_key=f2d7215515a34f350462609e31a408ef

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '../services/authentication.service';
-import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
-import { FirebaseAuthService } from '../services/firebase-auth.service';
+import { AuthenticationService } from '../../services/authentication.service';
+import { FormGroup, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { FirebaseAuthService } from 'src/app/services/firebase-auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -13,7 +13,6 @@ import { TranslateService } from '@ngx-translate/core';
 
 export class AuthComponent implements OnInit {
 
-  loginForm!: FormGroup;
   currentLang!: string;
   Login_Trans!: { en: string; ar: string };
 
@@ -36,23 +35,14 @@ export class AuthComponent implements OnInit {
     this.translate.use(this.currentLang);
   }
   ngOnInit(): void {
-    this.loginForm = new FormGroup({
-      'email': new FormControl(null, [Validators.required, Validators.email]),
-      'password': new FormControl(null, [Validators.required, Validators.minLength(6)])
+    this.loginFormHandler;
+  }
 
-    })
-
+  loginFormHandler(){
     const localData = localStorage.getItem('registeredUsers');
     if (localData != null) {
       this.registeredUsers = JSON.parse(localData);
     }
-
-    this.Login_Trans = {
-      en: 'Please log in to access your account.',
-      ar: 'سجل من فضلك',
-    };
-
-
   }
 
   onLogin(form: NgForm, type: string) {

@@ -4,6 +4,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { FirebaseAuthService } from './services/firebase-auth.service';
 
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -16,6 +17,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.authServive.autoLogin();
+  }
+
+  getMovies(){
     this.service.get_Movies().subscribe(response => {
       this.movies = response;
     })

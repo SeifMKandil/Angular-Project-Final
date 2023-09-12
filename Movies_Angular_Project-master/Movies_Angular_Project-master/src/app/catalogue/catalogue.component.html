@@ -7,24 +7,24 @@
     <title>Top Rated Movies</title>
 </head>
 
-<body>
-    <app-header></app-header>
+<body>    
     <div class="container">
         <h1 class="gradient-text movie-details-header"><b><i>{{"Top Movies" | translate}}</i></b></h1>
+            <a [routerLink]="['/movieDetails',movie.id]" *ngFor="let movie of movies?.results"
+                class="movie-container" >
+                <div class="movie-image">
+                    <img src="{{'https://image.tmdb.org/t/p/original' + movie.poster_path}}" alt="Movie 1">
+                </div>
+                <div class="movie-details" id="movie-details">
+                    <h3>{{movie.title}}</h3>
+                    <p class="movie-details-text"><span style="color: red;">{{"Release" | translate}}:</span>
+                        {{movie.release_date}}</p>
+                    <p class="movie-details-text" style="color: gold;">{{"Rating" | translate}}: {{movie.vote_average}}
+                    </p>
+                </div>
+            </a>
 
-        <a [routerLink]="['/movieDetails',movie.id]" *ngFor="let movie of (movies$ | async)?.results" class="movie-container">
-            <div class="movie-image">
-                <img src="{{'https://image.tmdb.org/t/p/original' + movie.poster_path}}" alt="Movie 1">
-            </div>
-            <div class="movie-details" id="movie-details">
-                <h3>{{movie.title}}</h3>
-                <p class="movie-details-text"><span style="color: red;">{{"Release" | translate}}:</span>
-                    {{movie.release_date}}</p>
-                <p class="movie-details-text" style="color: gold;">{{"Rating" | translate}}: {{movie.vote_average}}</p>
-            </div>
-        </a>
-
-
+       
 
 
 

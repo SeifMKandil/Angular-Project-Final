@@ -1,17 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class MovieApiService {
-  private baseUrl = 'https://api.themoviedb.org/3/movie/top_rated?api_key=f2d7215515a34f350462609e31a408ef';
+  private domain :  string | undefined
 
-  constructor(private httpClient: HttpClient) { }
+
+  constructor(private httpClient: HttpClient) { 
+  this.domain=environment.domain;
+  }
 
   get_Movies(){
-      return this.httpClient.get(this.baseUrl);
+      return this.httpClient.get(`${this.domain}`);
   }
   
   get_Movies_Details(detailUrl:string){

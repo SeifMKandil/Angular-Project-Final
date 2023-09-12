@@ -1,11 +1,12 @@
 // header.component.ts
 import { Component, OnDestroy, OnInit ,Inject } from '@angular/core';
-import { FirebaseAuthService } from './../services/firebase-auth.service';
+
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { Renderer2 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { FirebaseAuthService } from 'src/app/services/firebase-auth.service';
 
 @Component({
   selector: 'app-header',
@@ -24,6 +25,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
 
   ngOnInit(): void {
+    this.userSubscription();
+  }
+
+  userSubscription(){
     this.userSub = this.firebaseAuth.user$.subscribe((user) => {
       this.isAuthenticated = !!user;
     });

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MovieApiService } from '../services/movie-api.service';
+import { MovieApiService } from '../../services/movie-api.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -25,6 +25,11 @@ export class MovieDetailsComponent {
 
   currentLang = localStorage.getItem('currentLang');
   ngOnInit() {
+    
+    this.getMovieDetails();
+  }
+
+  getMovieDetails(){
     this.service.get_Movies_Details(this.detailUrlEn).subscribe(response => {
       this.movieDetail = response;
     })
@@ -42,7 +47,6 @@ export class MovieDetailsComponent {
 
 
     })
-
 
 
   }

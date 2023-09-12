@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
-import { User } from '../auth/user.model';
+
 import { Router } from '@angular/router';
+import { User } from '../authentication/auth/user.model';
 
 interface AuthResponse {
   idToken: string;

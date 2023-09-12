@@ -1,10 +1,10 @@
 import { RouterModule, Routes } from "@angular/router";
 import { HomeComponent } from "./home/home.component";
-import { MovieDetailsComponent } from "./movie-details/movie-details.component";
-import { RegisterComponent } from "./register/register.component";
+import { MovieDetailsComponent } from "./catalogue/movie-details/movie-details.component";
+import { RegisterComponent } from "./authentication/register/register.component";
 import { CatalogueComponent } from "./catalogue/catalogue.component";
 import { AuthGuard } from "./guards/auth.guard";
-import { AuthComponent } from "./auth/auth.component";
+import { AuthComponent } from "./authentication/auth/auth.component";
 import { LoginGuard } from "./guards/login.guard";
 import { NgModel } from "@angular/forms";
 import { NgModule } from "@angular/core";
