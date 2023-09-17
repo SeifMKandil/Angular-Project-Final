@@ -1,9 +1,6 @@
 
 import { NgModule } from '@angular/core';
 
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 import { HeaderComponent } from './header/header.component';
@@ -13,16 +10,20 @@ import { HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import {  RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [HeaderComponent, SpinnerComponent],
     imports: [
-        BrowserModule,
-        MatProgressSpinnerModule,
-        BrowserAnimationsModule,
-        RouterLink,
         CommonModule,
+        
+        RouterLink,
+        MatProgressSpinnerModule,
+        BrowserModule,
+        BrowserAnimationsModule,
         TranslateModule.forRoot({
             defaultLanguage: 'en',
             loader: {
@@ -36,7 +37,16 @@ import {  RouterLink } from '@angular/router';
         )
     ],
 
-    exports: [HeaderComponent, SpinnerComponent],
+    exports: 
+    [
+    HeaderComponent, 
+    SpinnerComponent,
+    CommonModule,
+    MatProgressSpinnerModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    
+],
 })
 export class SharedModule { }
 export function createTranslateLoader(http: HttpClient) {

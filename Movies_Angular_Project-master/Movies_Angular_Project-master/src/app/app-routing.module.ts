@@ -1,9 +1,14 @@
 import { RouterModule, Routes } from "@angular/router";
-import { HomeComponent } from "./home/home.component";
 import { NgModule } from "@angular/core";
 
+
 const appRoutes:Routes = [  
-  { path: '' , component: HomeComponent },
+  {
+    path: 'catalogue',
+    loadChildren: () =>
+      import('./Catalogue/catalogue.module').then((m) => m.CatalogueModule),
+  },
+
 ]
 
 @NgModule({

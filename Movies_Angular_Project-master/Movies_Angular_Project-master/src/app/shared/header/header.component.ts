@@ -1,5 +1,5 @@
 // header.component.ts
-import { Component, OnDestroy, OnInit ,Inject } from '@angular/core';
+import { Component, OnDestroy, OnInit ,Inject, EventEmitter, Output } from '@angular/core';
 
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -18,6 +18,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
   currentLang! : string;
 
+
+
   constructor(private firebaseAuth: FirebaseAuthService, private router: Router , 
     public translate:TranslateService, private renderer: Renderer2,  @Inject(DOCUMENT) private document: Document) {
     this.currentLang = localStorage.getItem('currentLang') || 'en';
@@ -26,6 +28,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.userSubscription();
+    this.saveDriection();
+
   }
 
   userSubscription(){
@@ -47,7 +51,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
     localStorage.setItem('currentLang',lang);
     const newDirection = lang === 'ar' ? 'rtl' : 'ltr';
 
-    // Update the HTML tag's direction
+    this.document.documentElement.setAttribute('dir', newDirection)
+
+  }
+
+
+  saveDriection(){
+    const newDirection = this.currentLang === 'ar' ? 'rtl' : 'ltr';
     this.document.documentElement.setAttribute('dir', newDirection)
   }
   

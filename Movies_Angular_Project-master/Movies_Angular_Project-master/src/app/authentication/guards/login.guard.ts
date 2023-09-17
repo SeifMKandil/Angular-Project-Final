@@ -1,4 +1,4 @@
-// auth.guard.ts
+
 import { Injectable } from '@angular/core';
 import {
   CanActivate,
@@ -8,13 +8,13 @@ import {
   Router,
 } from '@angular/router';
 import { Observable, map, take } from 'rxjs';
-import { FirebaseAuthService } from '../services/firebase-auth.service';
+import { FirebaseAuthService } from '../../services/firebase-auth.service';
 
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate {
+export class LoginGuard implements CanActivate {
   constructor(
     private authService: FirebaseAuthService,
     private router: Router
@@ -23,15 +23,15 @@ export class AuthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     router: RouterStateSnapshot
-  ): boolean| UrlTree | Promise<boolean | UrlTree> | Observable<boolean | UrlTree> {
+  ): boolean | UrlTree | Promise<boolean | UrlTree> | Observable<boolean | UrlTree> {
     return this.authService.user$.pipe(
       take(1),
       map((user: any) => {
-        const isAuth = !!user;
-        if (isAuth){
-          return true;
+        const isAuth = !!user; //Similar to if user = true -> isAuth = true else isAuth = false
+        if (isAuth) {
+          return this.router.createUrlTree(['/']);
         }
-        return this.router.createUrlTree(['/auth']);
+        return true;
       })
     );
   }

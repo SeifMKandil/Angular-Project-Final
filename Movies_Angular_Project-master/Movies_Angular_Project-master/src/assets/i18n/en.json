@@ -1,25 +1,18 @@
 {
-    "Login":"Login",
-    "Email":"Email",
-    "Password":"Password",
-    "Don't Have an account?":"Don't Have an account?",
-    "Register":"Register",
-    "Login with Firebase":"Login with Firebase",
-    "Top Movies":"Top Movies",
-    "Login | Register" : "Login | Register",
-    "Already a user ?" : "Already a user ?",
-    "Register with Firebase" :    "Register with Firebase",
-    "Release":"Release", 
-    "Rating":"Rating",
+    "LOGIN":"Login",
+    "EMAIL":"Email",
+    "PASSWORD":"Password",
+    "DON'T_HAVE_AN_ACCOUNT ?":"Don't Have an account?",
+    "REGISTER":"Register",
+    "LOGIN_WITH_FIREBASE":"Login with Firebase",
+    "TOP_MOVIES":"Top Movies",
+    "LOGIN | REGISTER" : "Login | Register",
+    "ALREADY_A_USER ?" : "Already a user ?",
+    "REGISTER_WITH_FIREBASE" :    "Register with Firebase",
+    "RELEASE":"Release", 
+    "RATING":"Rating",
     "Catalogue":"Catalogue",
-    "LogOut" :"LogOut",
-    "UserName":"UserName",
-    "Description":"Description"
-
-    
-
-
-
-
-
+    "LOGOUT" :"LogOut",
+    "USERNAME":"UserName",
+    "DESCRIPTION":"Description" 
 }

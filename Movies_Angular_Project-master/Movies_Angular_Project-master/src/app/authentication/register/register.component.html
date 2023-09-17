@@ -8,56 +8,70 @@
                             <div class="card-body p-md-5 mx-md-4">
 
                                 <div class="text-center">
-                                    <img src="https://seeklogo.com/images/N/netflix-n-logo-0F1ED3EBEB-seeklogo.com.png"
+                                    <img src={{authImage}}
                                         alt="logo">
-                                    <h4 class="mt-1 mb-5 pb-1"><span class="gradient-text">{{"Register" |
+                                    <h4 class="mt-1 mb-5 pb-1"><span class="gradient-text">{{"REGISTER" |
                                             translate}}</span>
                                     </h4>
 
                                 </div>
-
-                                <form (ngSubmit)="onRegister(f , 'Firebase')" #f="ngForm" *ngIf="!isLoading">
+                                <div *ngIf="isLoading">
+                                    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+                                </div>
+                                <form (ngSubmit)="onRegister(form , 'Firebase')" #form="ngForm" *ngIf="!isLoading">
                                     <div class="form-outline mb-4">
-                                        <label class="form-label" for="form2Example22">{{"UserName" | translate}}
+                                        <label class="form-label" for="form2Example22">{{"USERNAME" | translate}}
                                         </label>
                                         <input type="text" id="form2Example22" class="form-control"
-                                            placeholder="{{'UserName' | translate}}" name="userName" ngModel required>
+                                            placeholder="{{'UserName' | translate}}" 
+                                            name="userName" 
+                                            ngModel 
+                                            required
+                                            #userName= "ngModel" 
+                                            minlength="4"
+                                            [ngClass]="{ 'authentication-invalidInputField': userName.invalid && userName.touched,
+                                            'authentication-validInputField': userName.valid && userName.touched }">
+
+                                            <span class="help-block error-message"
+                                            *ngIf="!userName.valid && userName.touched">UserName Should Contain atleast 4 Characters</span>
 
                                     </div>
 
 
                                     <div class="form-outline mb-4">
-                                        <label class="form-label" for="form2Example22">{{ "Email" | translate }}
+                                        <label class="form-label" for="form2Example22">{{ "EMAIL" | translate }}
                                         </label>
                                         <input type="email" id="form2Example22" class="form-control"
                                             placeholder="{{ 'Email' | translate }}" name="email" email required ngModel
-                                            #email="ngModel">
+                                            #email="ngModel" [ngClass]="{ 'authentication-invalidInputField': email.invalid && email.touched,
+                                            'authentication-validInputField': email.valid && email.touched }">
                                         <span class="help-block error-message"
-                                            *ngIf="!email.valid && email.touched">Please Enter Valid Email</span>
+                                            *ngIf="!email.valid && email.touched">Please Enter Valid Email Format</span>
 
                                     </div>
 
                                     <div class="form-outline mb-4">
-                                        <label class="form-label" for="form2Example22">{{"Password" |
+                                        <label class="form-label" for="form2Example22">{{"PASSWORD" |
                                             translate}}</label>
                                         <input type="password" id="password" class="form-control"
                                             placeholder="{{'Password' | translate}}" name="password" ngModel
-                                            #password="ngModel" required>
+                                            #password="ngModel" required minlength="6" [ngClass]="{ 'authentication-invalidInputField': password.invalid && password.touched,
+                                            'authentication-validInputField': password.valid && password.touched }">
 
                                         <span class="help-block error-message"
-                                            *ngIf="!password.valid && password.touched">Please Enter Password</span>
+                                            *ngIf="!password.valid && password.touched">Password Should Contain atleast 6 Characters</span>
 
-                                    </div>
+                                        </div>
 
                                     <div class="text-center">
                                         <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
-                                            type="submit" [disabled]="!f.valid">{{"Register with Firebase" |
+                                            type="submit" [disabled]="!form.valid">{{"REGISTER_WITH_FIREBASE" |
                                             translate}} </button>
                                     </div>
 
                                     <div class="text-center">
                                         <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
-                                            type="submit" [disabled]="!f.valid">{{"Register" |
+                                            type="submit" [disabled]="!form.valid">{{"REGISTER" |
                                             translate}}
                                         </button>
                                     </div>
@@ -68,9 +82,9 @@
 
                                 </div>
                                 <div class="d-flex align-items-center justify-content-center pb-4">
-                                    <p class="mb-0 me-2 have-account">{{"Already a user ?" | translate}}</p>
+                                    <p class="mb-0 me-2 have-account">{{"ALREADY_A_USER ?" | translate}}</p>
                                     <button type="button" class="btn btn-outline-danger"
-                                        routerLink="/auth">{{"Login" |
+                                        routerLink="/login">{{"Login" |
                                         translate}}</button>
                                 </div>
 

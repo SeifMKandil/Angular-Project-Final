@@ -1,4 +1,3 @@
-
 <section class="h-100 gradient-form">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -9,53 +8,64 @@
                             <div class="card-body p-md-5 mx-md-4">
 
                                 <div class="text-center">
-                                    <img src="https://seeklogo.com/images/N/netflix-n-logo-0F1ED3EBEB-seeklogo.com.png"
+                                    <img src={{authImage}}
                                         alt="logo">
-                                    <h4 class="mt-1 mb-5 pb-1"><span class="gradient-text">{{"Login" |
+                                    <h4 class="mt-1 mb-5 pb-1"><span class="gradient-text">{{"LOGIN" |
                                             translate}}</span>
                                     </h4>
 
                                 </div>
 
-                                <form (ngSubmit)="onLogin(f , 'Firebase')" #f="ngForm">
+                                <form (ngSubmit)="onLogin(form , 'Firebase')" #form="ngForm">
 
                                     <div class="form-outline mb-4">
-                                        <label class="form-label" for="form2Example22">{{ "Email" | translate }}
+                                        <label class="form-label" for="form2Example22">{{ "EMAIL" | translate }}
                                         </label>
                                         <input type="email" id="form2Example22" class="form-control" placeholder="Email"
-                                            ngModel required email name="email" #email="ngModel">
+                                            ngModel required email 
+                                            name="email" 
+                                            #email="ngModel"
+                                            [ngClass]="{ 'authentication-invalidInputField': email.invalid && email.touched,
+                                            'authentication-validInputField': email.valid && email.touched }">
 
                                         <span class="help-block error-message"
-                                            *ngIf="!email.valid && email.touched">Please Enter Correct Email</span>
+                                            *ngIf="!email.valid && email.touched">Please Enter Correct Email Format</span>
 
                                     </div>
 
                                     <div class="form-outline mb-4">
-                                        <label class="form-label" for="form2Example22">{{"Password" |
+                                        <label class="form-label" for="form2Example22">{{"PASSWORD" |
                                             translate}}</label>
                                         <input type="password" id="password" class="form-control"
                                             placeholder="Confirm Password" name="password" ngModel #password="ngModel"
-                                            required>
+                                            required  minlength="6" [ngClass]="{ 'authentication-invalidInputField': password.invalid && password.touched,
+                                            'authentication-validInputField': password.valid && password.touched }">
 
                                         <span class="help-block error-message"
-                                            *ngIf="!password.valid && password.touched">Please Enter a Password</span>
+                                            *ngIf="!password.valid && password.touched">
+                                            Password Should contain at least 6 characters
+                                    
+                                        </span>
 
                                     </div>
                                     <div class="text-center">
                                         <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
-                                            type="submit" [disabled]="!f.valid">{{"Login" |
+                                            type="submit" [disabled]="!form.valid">{{"Login" |
                                             translate}}</button>
                                     </div>
 
                                 </form>
 
                                 <div class="d-flex align-items-center justify-content-center pb-4">
-                                    <p class="mb-0 me-2 have-account">{{"Don't Have an account?" | translate}}</p>
+                                    <p class="mb-0 me-2 have-account">{{"DON'T_HAVE_AN_ACCOUNT ?" | translate}}</p>
                                     <button type="button" class="btn btn-outline-danger"
-                                        routerLink="/register">{{"Register" |
+                                        routerLink="/register">{{"REGISTER" |
                                         translate}}</button>
                                 </div>
+                                <div class="alert alert-danger " *ngIf="error">
+                                    <p>{{error}}</p>
 
+                                </div>
                             </div>
                         </div>
                     </div>

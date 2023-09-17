@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<body dir="auto">
+<body>
 
     <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-black">
         <div class="container-fluid">
@@ -25,7 +25,7 @@
 
                     <li class="nav-item" *ngIf="!isAuthenticated">
                         <a class="nav-link active text-white" aria-current="page" style="padding-right: 20px;"
-                            routerLink="/auth">{{"Login | Register" | translate}}</a>
+                            routerLink="/login">{{"Login | Register" | translate}}</a>
                     </li>
 
                     <li class="nav-item" *ngIf="isAuthenticated">

@@ -1,5 +1,9 @@
-
-.mat-mdc-progress-spinner { --mdc-circular-progress-active-indicator-color: rgb(228, 10, 10); }
+.mat-mdc-progress-spinner { 
+    --mdc-circular-progress-active-indicator-color: rgb(228, 10, 10);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
 
 :root {
     --Movie-Red: #ff0000;
@@ -68,11 +72,10 @@ html[dir=rtl] .movie-image{
     color: #FF0000;
 }
 
-input.ng-invalid.ng-touched {
+.authentication-invalidInputField {
     border: 1px solid red;
-    
 }
 
-input.ng-valid.ng-touched {
+.authentication-validInputField {
     border: 1px solid rgb(30, 255, 0);
 }

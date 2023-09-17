@@ -1,3 +1,4 @@
+import { environment } from 'src/environments/environment';
 import { Component } from '@angular/core';
 import { MovieApiService } from '../services/movie-api.service';
 
@@ -8,13 +9,17 @@ import { MovieApiService } from '../services/movie-api.service';
 })
 export class HomeComponent {
   movies: any;
-  constructor(private service: MovieApiService) { }
-  title = 'Movies_Project';
+  title:string;
+  movieImage:string;
+  constructor(private service: MovieApiService) { 
+    this.title = environment.title;
+    this.movieImage=environment.movieImage;
+  }
+  
 
   ngOnInit() {
     this.getMovies();
   }
-
   getMovies() {
     this.service.get_Movies().subscribe(response => {
 

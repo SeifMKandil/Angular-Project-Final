@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 
 import { Router } from '@angular/router';
-import { User } from '../authentication/auth/user.model';
+import { User } from '../Authentication/login/user.model';
 
 interface AuthResponse {
   idToken: string;
@@ -50,7 +50,7 @@ export class FirebaseAuthService {
 
   logout() {
     this.userSubject.next(null);
-    this.router.navigate(['/auth']);
+    this.router.navigate(['/login']);
     localStorage.removeItem('userDataFireBase');
   }
 

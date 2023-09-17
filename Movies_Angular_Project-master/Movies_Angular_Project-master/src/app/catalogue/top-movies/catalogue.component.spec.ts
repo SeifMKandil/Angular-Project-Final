@@ -1,9 +1,12 @@
 import { ComponentFixture, TestBed, waitForAsync, fakeAsync, tick } from '@angular/core/testing';
 import { CatalogueComponent } from './catalogue.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { MovieApiService } from '../services/movie-api.service';
+import { MovieApiService } from '../../services/movie-api.service';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { of, throwError } from 'rxjs';
+import { By } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router'; // Import ActivatedRoute
+import { RouterLink } from '@angular/router';
 
 describe('CatalogueComponent', () => {
   let component: CatalogueComponent;
@@ -13,8 +16,17 @@ describe('CatalogueComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [CatalogueComponent],
-      imports: [HttpClientTestingModule, TranslateModule.forRoot()],
-      providers: [TranslateService, MovieApiService],
+      imports: [HttpClientTestingModule, TranslateModule.forRoot()  , RouterLink],
+      providers: [TranslateService, MovieApiService,
+        {
+          provide: ActivatedRoute, // Provide a mock ActivatedRoute
+          useValue: {
+            snapshot: {
+              data: {}, // Add any route data you need for testing here
+            },
+          },
+        },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(CatalogueComponent);
@@ -40,7 +52,6 @@ describe('CatalogueComponent', () => {
     expect(compiled.querySelector('h1').textContent).toContain("Top Movies");
   });
 
-
   it('should handle errors when loading movies', fakeAsync(() => {
     const getMoviesSpy = spyOn(movieApiService, 'get_Movies').and.returnValue(
       throwError('An error occurred')
@@ -53,4 +64,24 @@ describe('CatalogueComponent', () => {
     expect(component.errorMessage).toEqual('An error occurred');
   }));
   
+  it('Check the color of the Rating is gold', waitForAsync(() => { 
+    const mockMovies = {
+      results: [
+        {
+          id: 1,
+          title: 'Test Movie',
+          release_date: '2023-09-07',
+          vote_average: 2,
+        }
+      ]
+    };
+    component.movies = mockMovies;
+    
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      const movieDetail = fixture.debugElement.query(By.css('.movie-details')).nativeElement;
+      const rating =  movieDetail.querySelector('.movie-details-text-rating');
+      expect(getComputedStyle(rating).color).toBe('rgb(255, 215, 0)');
+    });
+  }));
 });

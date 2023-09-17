@@ -1,21 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication.service';
-import { FormGroup, NgForm } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { FirebaseAuthService } from 'src/app/services/firebase-auth.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-auth',
-  templateUrl: './auth.component.html',
-  styleUrls: ['./auth.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
 
 export class AuthComponent implements OnInit {
 
   currentLang!: string;
-  Login_Trans!: { en: string; ar: string };
-
+  authImage:string;
+  error: string = '';
 
   loginObj: any = {
     email: '',
@@ -29,7 +30,9 @@ export class AuthComponent implements OnInit {
 
   constructor(private authService: AuthenticationService, private firebaseAuth: FirebaseAuthService,
     private router: Router,
-    public translate: TranslateService) {
+    public translate: TranslateService) 
+    {
+    this.authImage=environment.authImage; 
     this.registeredUsers = authService.getRegisteredUsers();
     this.currentLang = localStorage.getItem('currentLang') || 'en';
     this.translate.use(this.currentLang);
@@ -52,7 +55,7 @@ export class AuthComponent implements OnInit {
           this.router.navigate(['/catalogue'])
 
         }, error => {
-          console.error("Firebase login error:", error);
+          this.error='Login Error , Please Enter Correct Credntials'
 
         }
 

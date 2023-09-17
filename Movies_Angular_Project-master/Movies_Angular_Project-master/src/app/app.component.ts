@@ -1,6 +1,5 @@
 import { MovieApiService } from './services/movie-api.service';
 import { Component, OnInit } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { FirebaseAuthService } from './services/firebase-auth.service';
 
 

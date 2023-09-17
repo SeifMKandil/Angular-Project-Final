@@ -1,15 +1,16 @@
 import { RouterModule, Routes } from "@angular/router";
 import { NgModule } from "@angular/core";
 
-import { AuthGuard } from "../guards/auth.guard";
-import { CatalogueComponent } from "./catalogue.component";
+import { AuthGuard } from "../Authentication/guards/catalogue.guard";
+import { CatalogueComponent } from "./top-movies/catalogue.component";
 import { MovieDetailsComponent } from "./movie-details/movie-details.component";
 
 
 const authRoutes:Routes = [
     { path: 'movieDetails/:id',component:MovieDetailsComponent},
+
     {
-      path: 'catalogue',
+      path: '',
       component: CatalogueComponent,
       canActivate: [AuthGuard], 
     },
@@ -21,4 +22,8 @@ const authRoutes:Routes = [
 
 })
 
-export class CatalogueRoutingModule{}
+export class CatalogueRoutingModule{
+  constructor(){
+    console.log("CatalougeComponent");
+  }
+}

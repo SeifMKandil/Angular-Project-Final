@@ -4,17 +4,16 @@
 <body>
 
     <div>
-        <p class="Main-Text"><b><i>{{"Top Movies" |
-            translate}}</i></b></p>
+        <p class="Main-Text"><b><i>{{ title | translate }}</i></b></p>
     </div>
     
         <div class="container">
             <div class="row">
                 <div *ngFor="let movie of movies?.results" class="col-md-3 movie-card" >
                     <a routerLink="/catalogue" class="card">
-                        <img src="{{ 'https://image.tmdb.org/t/p/original' + movie.poster_path }}" class="card-img-top" alt="...">
+                        <img src="{{ movieImage + movie.poster_path }}" class="card-img-top" alt="...">
                         <div class="card-body" >
-                            <p>{{movie.title}}</p>
+                            <p class="cardText">{{movie.title}}</p>
                         </div>
                     </a>
                 </div>

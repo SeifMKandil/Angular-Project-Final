@@ -22,3 +22,16 @@
 
     color: var(--Movie-Red);
 }
+
+/* Add this CSS to display the "Ar" and "En" buttons side by side when navbar is collapsed */
+@media (max-width: 1000px) {
+    .navbar-nav.ml-auto {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .navbar-toggler.collapsed + .navbar-collapse .navbar-nav.ml-auto {
+        display: none;
+    }
+}

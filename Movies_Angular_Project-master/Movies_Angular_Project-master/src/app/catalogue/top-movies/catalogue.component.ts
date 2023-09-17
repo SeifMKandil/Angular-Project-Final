@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MovieApiService } from '../services/movie-api.service';
-import { SharedModule } from '../shared/shared.module';
+import { MovieApiService } from '../../services/movie-api.service';
+import { SharedModule } from '../../shared/shared.module';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-catalogue',
@@ -11,10 +12,18 @@ export class CatalogueComponent implements OnInit {
 
   movies:any;
   errorMessage= '';
-  constructor(private service:MovieApiService) {}
+  movieImage:string;
+
+  constructor(private service:MovieApiService) {
+    this.movieImage=environment.movieImage;
+  }
   title = 'Movies_Project';
 
   ngOnInit() {
+    this.getMovies();
+  }
+
+  getMovies(){
     this.service.get_Movies().subscribe(
       (response) => {
         this.movies = response;
@@ -24,5 +33,4 @@ export class CatalogueComponent implements OnInit {
       }
     );
   }
-
 }

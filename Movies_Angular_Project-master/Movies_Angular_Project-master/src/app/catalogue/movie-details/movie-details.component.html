@@ -15,12 +15,12 @@
                                     </h3>
 
                                     <div>
-                                        <p class="gradient-text movie-card-details"><b>{{"Release" |
+                                        <p class="gradient-text movie-card-details"><b>{{"RELEASE" |
                                                 translate}}</b><span class="gradient-text"
                                                 style="color: var(--Movie-Black);"><b>{{movieDetail?.release_date}}</b></span>
                                         </p>
 
-                                        <p class="gradient-text movie-card-details"><b>{{"Rating" | translate}}:
+                                        <p class="gradient-text movie-card-details"><b>{{"RATING" | translate}}:
                                             </b><span><b>{{movieDetail?.vote_average}}</b></span></p>
 
                                         <p class="gradient-text descTranslation movie-card-details" *ngIf="isArabic;">
@@ -35,8 +35,8 @@
 
                                     </div>
                                     <div class="flex-container" style="padding-top: 30px;">
-                                        <button type="button" class="btn btn-outline-danger"
-                                            style="margin-right: 30px;">Watch Trailer</button>
+                                        <a href=""><button type="button" class="btn btn-outline-danger"
+                                            style="margin-right: 30px;">Watch Trailer</button></a>
                                         <button type="button" class="btn btn-outline-success">Watch Now</button>
                                     </div>
                                 </div>
@@ -44,7 +44,7 @@
                             <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
 
                                 <div class="image-container">
-                                    <img src="{{'https://image.tmdb.org/t/p/original' + movieDetail?.poster_path}}"
+                                    <img src="{{movieImage + movieDetail?.poster_path}}"
                                         alt="Image">
                                 </div>
 

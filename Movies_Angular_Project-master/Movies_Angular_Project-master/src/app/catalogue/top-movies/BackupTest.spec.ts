@@ -14,10 +14,8 @@
 //     fixture.detectChanges();
 //     fixture.whenStable().then(() => {
 //       const movieDetail = fixture.debugElement.query(By.css('.movie-details')).nativeElement;
-  
 //       expect(movieDetail).toBeTruthy(); 
 //       expect(movieDetail.innerHTML.length).toBeGreaterThan(0); 
-      
 //     });
 //   }));
 
@@ -34,13 +32,12 @@
 //       ]
 //     };
 //     component.movies$ = mockMovies;
-    
+
 //     fixture.detectChanges();
 //     fixture.whenStable().then(() => {
 //       const movieDetail = fixture.debugElement.query(By.css('.movie-details')).nativeElement;
 //       const computedStyles = getComputedStyle(movieDetail);
 //       const backgroundColor = computedStyles.backgroundColor;
-  
 //       expect(backgroundColor).toBe('rgba(0, 0, 0, 0)');
 //     });
 //   }));
